@@ -1,0 +1,23 @@
+export const logoIcon = require('./images/Cosmic-Muggles.png');
+export const bgIcon = require('./images/bg.png');
+export const nft1Icon = require('./images/1.jpg');
+export const heartIcon = require('./images/heart.png')
+export const user1Icon = require('./images/user1.png')
+export const user2Icon = require('./images/user2.png')
+export const user3Icon = require('./images/user3.png')
+export const user4Icon = require('./images/user4.png')
+export const user5Icon = require('./images/user5.png')
+export const user6Icon = require('./images/user6.png')
+export const user7Icon = require('./images/user7.png')
+export const user8Icon = require('./images/user8.png')
+export const user9Icon = require('./images/user9.png')
+export const user10Icon = require('./images/user10.png')
+export const user11Icon = require('./images/user11.png')
+export const infoIcon1 = require('./images/userIcon.png')
+export const infoIcon2 = require('./images/add-info-icon.png')
+export const infoIcon3 = require('./images/info-icon-03.png')
+export const infoIcon4 = require('./images/info-icon-04.png')
+export const nftbgIcon = require('./images/image90.png')
+export const imageIcon = require('./images/image.png')
+export const image1Icon = require('./images/image1.jpeg')
+

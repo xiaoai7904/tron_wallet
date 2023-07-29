@@ -1,0 +1,256 @@
+@import '../../style/px2vw.less';
+
+.header-view-btn {
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  background-size: 100% 100%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+.header-view-btn.header-view-btn-dark {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.header-view-account {
+  position: relative;
+  .anticon-caret-down {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+  }
+}
+.header-view-account::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: #00ff62;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  z-index: 2;
+}
+
+.connect-wallet-modal {
+  .ant-modal-content {
+    border-radius: 16px;
+  }
+  .ant-modal-close {
+    display: none;
+  }
+  .connect-wallet-modal-card {
+    position: relative;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 0px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    max-width: 800px;
+    min-width: fit-content;
+    max-height: 100%;
+    overflow: auto;
+  }
+  .connect-wallet-modal-provider-wrapper {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 0px;
+    border: 1px solid rgba(195, 195, 195, 0.14);
+  }
+  .connect-wallet-modal-provider-wrapper:hover .connect-wallet-modal-provider-container {
+    background-color: rgba(195, 195, 195, 0.14);
+  }
+  .connect-wallet-modal-provider-container {
+    transition: background-color 0.2s ease-in-out 0s;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 24px 16px;
+  }
+  .icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    border-radius: 50%;
+    overflow: visible;
+    box-shadow: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .title {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0.5em;
+    color: rgb(12, 12, 13);
+    text-align: center;
+  }
+  .description {
+    width: 100%;
+    font-size: 18px;
+    margin: 0.333em 0px;
+    color: rgb(169, 169, 188);
+    text-align: center;
+  }
+}
+
+.login-confirm {
+  .ant-modal-confirm-title {
+    font-size: 24px;
+  }
+  .withdraw-modal-item {
+    .label {
+      width: 200px !important;
+      text-align: right;
+      margin-right: 10px;
+    }
+  }
+}
+
+.login-password-confirm {
+  .withdraw-modal-item {
+    margin-bottom: 150px !important;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .login-confirm {
+    .ant-modal-confirm-title {
+      font-size: .vw(30, 750) [ @vw];
+    }
+    .withdraw-modal-item {
+      .label {
+        width: .vw(500, 750) [ @vw] !important;
+        text-align: right;
+        margin-right: .vw(10, 750) [ @vw];
+      }
+    }
+    // .withdraw-modal-item:nth-of-type(2) {
+    //   margin-bottom: .vw(250, 750) [ @vw] !important;
+    // }
+  }
+
+  // .login-password-confirm {
+  //   .withdraw-modal-item {
+  //     margin-bottom: .vw(250, 750) [ @vw] !important;
+  //   }
+  // }
+}
+
+@media screen and(max-width: 750px) {
+  .connect-wallet-modal {
+    .ant-modal-content {
+      border-radius: 16px;
+    }
+    .ant-modal-close {
+      display: none;
+    }
+    .connect-wallet-modal-card {
+      position: relative;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      border-radius: 12px;
+      padding: 0px;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      min-width: fit-content;
+      max-height: 100%;
+      overflow: auto;
+    }
+    .connect-wallet-modal-provider-wrapper {
+      width: 100%;
+      padding: 8px;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+      border-radius: 0px;
+      border: 1px solid rgba(195, 195, 195, 0.14);
+    }
+    .connect-wallet-modal-provider-wrapper:hover .connect-wallet-modal-provider-container {
+      background-color: rgba(195, 195, 195, 0.14);
+    }
+    .connect-wallet-modal-provider-container {
+      transition: background-color 0.2s ease-in-out 0s;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      background-color: rgb(255, 255, 255);
+      border-radius: 12px;
+      padding: 1vw;
+    }
+    .icon {
+      width: 8.5vw;
+      height: 8.5vw;
+      display: flex;
+      border-radius: 50%;
+      overflow: visible;
+      box-shadow: none;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .title {
+      width: 100%;
+      font-size: 5vw;
+      font-weight: 700;
+      margin-top: 0.5em;
+      color: rgb(12, 12, 13);
+      text-align: center;
+    }
+    .description {
+      width: 100%;
+      font-size: 4vw;
+      margin: 0.333em 0px;
+      color: rgb(169, 169, 188);
+      text-align: center;
+    }
+  }
+}

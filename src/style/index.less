@@ -1,0 +1,651 @@
+@import './normalize.less';
+@import './pageView.less';
+@import './var.less';
+@import './px2vw.less';
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: url(../assets/font/8vIQ7wUr0m80wwYf0QCXZzYzUoTg_T6hR4jNCA.woff2);
+}
+
+body {
+  font-size: 14px;
+  line-height: initial !important;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif !important;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.es {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.es-all {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.app-container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+@keyframes opacityPulse {
+  0% {
+    color: rgba(256, 256, 256, 1);
+  }
+
+  50% {
+    color: rgba(256, 256, 256, 0.1);
+  }
+  100% {
+    color: rgba(256, 256, 256, 1);
+  }
+}
+
+@keyframes upAndDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(114, 114, 114, 0.4);
+  transition: all 0.2s;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(95, 95, 95, 0.7);
+  }
+}
+
+.connected-modal-wrap {
+  width: 560px !important;
+  .ant-modal-body {
+    padding: 50px 32px 32px 36px !important;
+  }
+
+  .ant-modal-confirm-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .ant-modal-content {
+    background: var(--color-white);
+    border-radius: 15px;
+    .withdraw-modal-item {
+      .ant-input {
+        width: 235px !important;
+      }
+    }
+    .ant-modal-confirm-content {
+      margin: 0 !important;
+    }
+  }
+  .ant-modal-confirm-title,
+  .ant-modal-confirm-title,
+  .ant-modal-confirm-content {
+    font-size: 24px !important;
+    color: var(--color-gray2) !important;
+  }
+
+  .ant-modal-confirm-body > .anticon {
+    display: none;
+  }
+  .ant-modal-confirm-btns {
+    display: none;
+  }
+  .connected-modal {
+    text-align: center;
+    .account-name {
+      position: relative;
+      color: var(--color-gray4);
+      font-size: 18px;
+      text-align: center;
+      margin: 20px 0 30px 0;
+      background-color: var(--color-gray-1);
+      border-radius: 40px;
+      padding: 8px 80px;
+    }
+    .account-name::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: #00ff62;
+      box-shadow: #00ff62 0px 0px 8px;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 60px;
+      z-index: 2;
+    }
+    .disconnect-btn {
+      height: 40px;
+      background-color: var(--color-primary);
+      border-radius: 20px;
+      text-align: center;
+      line-height: 40px;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      font-size: 16px;
+      padding: 0 20px;
+      cursor: pointer;
+    }
+  }
+  .withdraw-confirm-modal {
+    margin: 23px 0 19px 0 !important;
+    .withdraw-modal-item {
+      margin-bottom: 17px !important;
+    }
+    .withdraw-modal-item:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+.connected-modal-wrap.connected-success-modal {
+  .ant-modal-content {
+    .ant-modal-confirm-content {
+      margin: 0 !important;
+    }
+  }
+}
+.connected-modal-wrap.login-confirm {
+  width: 560px !important;
+  .withdraw-confirm-modal {
+    padding: 24px 20px;
+  }
+}
+.network-modal {
+  .ant-modal-confirm-content {
+    font-size: 18px !important;
+    padding: 30px 0;
+  }
+  .ant-modal-confirm-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ant-btn.ant-btn-primary {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-white);
+      margin-left: 70px !important;
+      border-radius: 32px;
+    }
+    .ant-btn {
+      background-color: var(--color-modal-btn);
+      border-color: var(--color-modal-btn);
+      color: var(--color-white);
+      border-radius: 32px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+}
+
+.sign-up-box {
+  .social-icons {
+    .icon {
+      margin-right: 30px;
+    }
+  }
+  svg {
+    fill: var(--color-gray1);
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.withdraw-confirm {
+  width: 640px !important;
+  .ant-modal-confirm-body-wrapper {
+    position: relative;
+  }
+  .ant-modal-confirm-content {
+    width: 100%;
+    margin: 0;
+  }
+  .ant-modal-confirm-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .ant-modal-confirm-body-wrapper {
+    position: relative;
+  }
+  .ant-modal-content {
+    background: var(--color-white);
+    border-radius: 15px;
+  }
+  .ant-modal-confirm-title,
+  .ant-modal-confirm-title,
+  .ant-modal-confirm-content {
+    font-size: 24px;
+    color: var(--color-gray2) !important;
+  }
+
+  .ant-modal-confirm-body > .anticon {
+    display: none;
+  }
+  .ant-modal-confirm-btns {
+    display: none;
+  }
+  .ant-modal-close {
+    top: 7px;
+    right: 7px;
+  }
+  .ant-modal-close-x {
+    width: initial;
+    height: initial;
+    .anticon.anticon-close-circle {
+      font-size: 30px;
+      color: var(--color-gray5);
+    }
+  }
+  .withdraw-confirm-modal {
+    background-color: var(--color-gray-1);
+    border-radius: 5px;
+    padding: 57px 30px 35px 50px;
+    margin-bottom: 33px;
+    .withdraw-modal-item-m,
+    .withdraw-modal-btn-m {
+      display: none;
+    }
+    .withdraw-modal-item {
+      color: var(--color-gray2);
+      font-size: 18px;
+      margin-bottom: 34px;
+      .label {
+        display: inline-block;
+        width: 88px;
+      }
+      .balance {
+        color: var(--color-orange);
+        font-size: 24px;
+        width: 170px;
+      }
+      .unit {
+        color: var(--color-gray1);
+        font-size: 16px;
+        margin: 0 0 0 10px;
+      }
+      .ant-btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+      }
+      .ant-input {
+        background-color: var(--color-white);
+        border-color: var(--color-gray3);
+        color: var(--color-gray2);
+        border-radius: 10px;
+        width: 170px;
+        padding-left: 20px;
+        height: 40px;
+        font-size: 14px;
+      }
+      .fast-btn {
+        height: 42px;
+        padding: 4px 20px;
+        background-color: var(--color-gray5);
+        border-color: var(--color-gray5);
+      }
+      .fast-btn-all {
+        background-color: var(--color-blue1);
+        border-color: var(--color-blue1);
+      }
+      .ant-input:focus,
+      .ant-input-focused {
+        box-shadow: none;
+        border-color: var(--color-blue-5);
+        transition: all 0.3s;
+      }
+    }
+    .withdraw-modal-btns {
+      margin-top: 91px;
+      .ant-btn {
+        height: 40px;
+      }
+      .footer-confirm-btn {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+      }
+      .ant-btn-primary {
+        margin-left: 70px;
+      }
+    }
+  }
+  .ant-modal-confirm-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ant-btn.ant-btn-primary {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-white);
+      margin-left: 70px !important;
+      border-radius: 32px;
+    }
+    .ant-btn {
+      background-color: var(--color-modal-btn);
+      border-color: var(--color-modal-btn);
+      color: var(--color-white);
+      border-radius: 32px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+}
+
+.withdrawals-drawer {
+  .ant-drawer-content,
+  .ant-drawer-header {
+    background-color: var(--color-dark);
+    border-color: var(--color-dark);
+  }
+  .ant-drawer-header {
+    padding: 24px;
+  }
+  .ant-drawer-title,
+  .ant-drawer-close {
+    color: var(--color-white);
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .sign-up-box {
+    .social-icons {
+      .icon {
+        margin-right: .vw(30, 750) [ @vw];
+      }
+    }
+    svg {
+      fill: var(--color-gray1);
+      width: .vw(50, 750) [ @vw];
+      height: .vw(50, 750) [ @vw];
+    }
+  }
+
+  .connected-modal-wrap {
+    .ant-modal-content {
+      background: var(--color-white);
+      border-radius: 15px;
+      .withdraw-modal-item {
+        .ant-input {
+          width: 100% !important;
+        }
+      }
+    }
+    .ant-modal-confirm-title,
+    .ant-modal-confirm-title,
+    .ant-modal-confirm-content {
+      font-size: .vw(28, 750) [ @vw] !important;
+      color: var(--color-gray2) !important;
+    }
+  }
+
+  .network-modal {
+    .ant-modal-confirm-content {
+      font-size: .vw(20, 750) [ @vw] !important;
+      padding: .vw(30, 750) [ @vw] 0;
+    }
+    .ant-modal-confirm-btns {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .ant-btn.ant-btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+        margin-left: .vw(70, 750) [ @vw] !important;
+        border-radius: .vw(35, 750) [ @vw];
+      }
+      .ant-btn {
+        background-color: var(--color-modal-btn);
+        border-color: var(--color-modal-btn);
+        color: var(--color-white-4);
+        border-radius: .vw(35, 750) [ @vw];
+        height: .vw(60, 750) [ @vw];
+        padding: .vw(10, 750) [ @vw] .vw(40, 750) [ @vw];
+        font-size: .vw(24, 750) [ @vw];
+      }
+    }
+  }
+
+  .withdraw-confirm {
+    width: 90vw !important;
+    .ant-modal-body {
+      padding: .vw(32, 750) [ @vw] !important;
+    }
+    .ant-modal-confirm-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .ant-modal-confirm-body-wrapper {
+      position: relative;
+    }
+    .ant-modal-content {
+      background: var(--color-white);
+      border-radius: 15px;
+    }
+    .ant-modal-confirm-title,
+    .ant-modal-confirm-title,
+    .ant-modal-confirm-content {
+      font-size: 24px;
+      color: var(--color-gray2) !important;
+    }
+
+    .ant-modal-confirm-body > .anticon {
+      display: none;
+    }
+    .ant-modal-confirm-btns {
+      display: none;
+    }
+    .ant-modal-confirm-content {
+      width: 100%;
+    }
+    .ant-modal-close {
+      top: .vw(7, 750) [ @vw];
+      right: .vw(7, 750) [ @vw];
+    }
+    .ant-modal-close-x {
+      width: initial;
+      height: initial;
+      .anticon.anticon-close-circle {
+        font-size: .vw(40, 750) [ @vw];
+        color: var(--color-gray5);
+      }
+    }
+    .withdraw-confirm-modal {
+      .withdraw-modal-item-m {
+        display: flex;
+        justify-content: space-between !important;
+      }
+      .withdraw-modal-btn-m {
+        display: flex;
+        width: 100%;
+        .ant-btn-primary {
+          width: 100%;
+          background-color: var(--color-primary);
+          border-color: var(--color-primary);
+          color: var(--color-white);
+          height: .vw(60, 750) [ @vw];
+          padding: .vw(10, 750) [ @vw] .vw(40, 750) [ @vw];
+          font-size: .vw(24, 750) [ @vw];
+        }
+        .fast-btn-all {
+          background-color: var(--color-blue1);
+          border-color: var(--color-blue1);
+        }
+      }
+      .withdraw-modal-item-pc {
+        .fast-btn,
+        .ant-btn-primary {
+          display: none;
+        }
+      }
+      .withdraw-modal-item {
+        color: var(--color-gray1);
+        font-size: .vw(24, 750) [ @vw];
+        margin-bottom: .vw(43, 750) [ @vw];
+        justify-content: flex-start;
+        .label {
+          display: inline-block;
+          width: .vw(120, 750) [ @vw];
+        }
+        .balance {
+          color: var(--color-orange);
+          font-size: .vw(26, 750) [ @vw];
+          width: .vw(300, 750) [ @vw];
+          margin-left: .vw(20, 750) [ @vw];
+        }
+        .unit {
+          color: var(--color-gray1);
+          font-size: .vw(20, 750) [ @vw];
+          margin: 0 0 0 .vw(15, 750) [ @vw];
+        }
+        .ant-btn-primary {
+          background-color: var(--color-primary);
+          border-color: var(--color-primary);
+          color: var(--color-white);
+        }
+        .ant-input {
+          background-color: var(--color-white);
+          border-color: var(--color-gray3);
+          color: var(--color-gray2);
+          border-radius: .vw(15, 750) [ @vw];
+          width: 100%;
+          padding-left: .vw(20, 750) [ @vw];
+          height: .vw(60, 750) [ @vw];
+          margin-left: .vw(20, 750) [ @vw];
+          font-size: .vw(20, 750) [ @vw];
+        }
+        .fast-btn {
+          height: .vw(60, 750) [ @vw];
+          padding: .vw(10, 750) [ @vw] .vw(40, 750) [ @vw];
+          font-size: .vw(24, 750) [ @vw];
+          background-color: var(--color-gray5);
+          border-color: var(--color-gray5);
+        }
+        .fast-btn-all {
+          background-color: var(--color-blue1);
+          border-color: var(--color-blue1);
+        }
+        .ant-input:focus,
+        .ant-input-focused {
+          box-shadow: none;
+          border-color: var(--color-blue-5);
+          transition: all 0.3s;
+        }
+      }
+    }
+    .ant-modal-confirm-btns {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .ant-btn.ant-btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+        margin-left: .vw(70, 750) [ @vw] !important;
+        border-radius: .vw(35, 750) [ @vw];
+      }
+      .ant-btn {
+        background-color: var(--color-modal-btn);
+        border-color: var(--color-modal-btn);
+        color: var(--color-white-4);
+        border-radius: .vw(35, 750) [ @vw];
+        height: .vw(60, 750) [ @vw];
+        padding: .vw(10, 750) [ @vw] .vw(40, 750) [ @vw];
+        font-size: .vw(24, 750) [ @vw];
+      }
+    }
+  }
+
+  .withdrawals-drawer {
+    .ant-drawer-content-wrapper {
+      width: 100% !important;
+    }
+    .ant-drawer-body {
+      padding: .vw(20, 750) [ @vw];
+    }
+    .ant-drawer-content,
+    .ant-drawer-header {
+      background-color: var(--color-dark);
+      border-color: var(--color-dark);
+    }
+    .ant-drawer-header {
+      padding: .vw(24, 750) [ @vw];
+    }
+    .ant-drawer-title,
+    .ant-drawer-close {
+      color: var(--color-white);
+      font-size: .vw(24, 750) [ @vw];
+    }
+    .table-view {
+      .table-thead {
+        .ant-row {
+          height: .vw(60, 750) [ @vw];
+        }
+      }
+    }
+  }
+}

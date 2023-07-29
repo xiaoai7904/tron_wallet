@@ -1,0 +1,15 @@
+@default-w: 750px;
+
+.vw(@px, @width: @default-w) {
+  @var: unit((@px / @width) * 100);
+  @vw: ~'@{var}vw';
+  //   @media only screen and (max-width: 1919px) {
+  //     @var: unit((@px / @width) * 100);
+  //     @vw: ~'@{var}vw';
+  //   }
+
+  //   @media only screen and (min-width: 1920px) {
+  //     @var: unit(@px);
+  //     @vw: ~'@{var}px';
+  //   }
+}

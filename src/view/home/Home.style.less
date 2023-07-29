@@ -1,0 +1,711 @@
+@import '../../style/px2vw.less';
+
+.home {
+  color: #ffffff;
+  font-family: 'Red Hat Display', Sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  &-banner {
+    min-height: 907px;
+    background-color: #1e2241;
+    background-image: url('../../assets/images/bg.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 180px 20px 70px 20px;
+    &-left {
+      h5 {
+        color: #8eacff;
+        font-family: 'Red Hat Display', Sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+      }
+      h1 {
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        font-size: 60px;
+        font-weight: 700;
+      }
+      p {
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        padding-bottom: 75px;
+      }
+      .ant-btn {
+        color: var(--color-primary);
+        background-color: #33333300;
+        border-style: solid;
+        border-width: 2px 2px 2px 2px;
+        border-color: var(--color-primary);
+        border-radius: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        box-shadow: 0px 7px 20px 0px rgb(0 0 0 / 25%);
+        height: 50px;
+        &:hover {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+        }
+      }
+    }
+    &-right {
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--color-white);
+      background-color: #8c7caa;
+
+      &-content {
+        h3 {
+          color: var(--color-white);
+          font-size: 21px;
+          font-weight: 700;
+          margin: 30px 0;
+        }
+      }
+      &-image {
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+        }
+      }
+      .home-nft-price {
+        color: var(--color-white);
+        font-weight: 700;
+        :first-child {
+          color: #202443;
+          margin-right: 10px;
+        }
+      }
+      .home-buy {
+        background-color: #202443;
+        border-color: #202443;
+        color: var(--color-white);
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .hot {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        padding: 8px 20px 8px 20px;
+        background-color: #ffffffa6;
+        border: 1px solid var(--color-white);
+        border-radius: 20px;
+        box-shadow: 0px 7px 20px 0px rgb(0 0 0 / 25%);
+        :first-child {
+          width: 18px !important;
+          height: 18px !important;
+        }
+        :last-child {
+          color: #202443;
+          font-size: 12px;
+          font-weight: 500;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+  &-popular {
+    background-color: #1e2241;
+    background-image: url('../../assets/images/bg1.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 70px 5px 75px 5px;
+
+    &-header {
+      padding: 0px 15px 75px 15px;
+      &-title {
+        h2 {
+          font-size: 36px;
+          font-weight: 700;
+          color: var(--color-white);
+          margin-bottom: 45px;
+        }
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          color: var(--color-white);
+        }
+      }
+      .ant-btn {
+        color: var(--color-white);
+        background-color: #33333300;
+        border: 1px solid var(--color-primary);
+        border-radius: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
+        height: 52px;
+        font-size: 16px;
+        font-weight: 500;
+        &:hover {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+        }
+      }
+    }
+    &-list {
+      padding: 20px;
+    }
+  }
+
+  &-trend {
+    background-color: #1e2241;
+    padding: 75px 5px 150px 5px;
+    &-wrap {
+      background-color: #1e2241;
+      background-image: url('../../assets/images/trending-creator.jpeg');
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 150px 20px 150px 20px;
+      max-width: 1440px;
+      margin: 0 auto;
+      border-radius: 20px;
+      h1 {
+        color: var(--color-white);
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 40px;
+      }
+      .sub-title {
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+        padding: 0px 15px 73px 15px;
+      }
+    }
+    &-item {
+      padding: 30px 30px 30px 30px;
+      background-color: #1e2243;
+      border-radius: 20px 20px 20px 20px;
+      box-shadow: 0px 4px 4px 0px rgb(26 25 39 / 25%);
+      img {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      &-label {
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        h4 {
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 700;
+          margin: 15px 0px 10px 0px;
+        }
+        p {
+          color: var(--color-white);
+          font-size: 12px;
+          span {
+            color: #4f7dfd;
+          }
+        }
+      }
+    }
+  }
+
+  &-explore {
+    background-color: #1e2241;
+    padding: 75px 20px 150px 20px;
+    min-height: 100vh;
+    h1 {
+      color: #ffffff;
+      font-family: 'Red Hat Display', Sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      padding: 75px 15px 30px 15px;
+    }
+    &-btns {
+      width: 100%;
+      margin: 80px 0 0 0;
+      .ant-btn {
+        color: var(--color-white);
+        background-color: #33333300;
+        border: 1px solid var(--color-primary);
+        border-radius: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
+        height: 52px;
+        font-size: 16px;
+        font-weight: 500;
+        &:hover {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+
+  &-info-box {
+    background-color: #1e2241;
+    padding: 0px 20px 150px 20px;
+    &-item {
+      padding: 40px 25px 40px 25px;
+      background-color: transparent;
+      background-image: linear-gradient(145deg, #ffca4033 0%, #ffca4000 100%);
+      border-radius: 20px;
+      height: 100%;
+      img {
+        width: 59px;
+        height: auto;
+        padding: 0px 0px 20px 0px;
+      }
+      h1 {
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: none;
+        line-height: 1.5em;
+        letter-spacing: 0px;
+        margin: 0px 0px 19px 0px;
+      }
+      p {
+        margin: 0px 0px 0px 0px;
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        line-height: 1.7em;
+        letter-spacing: 0px;
+      }
+    }
+    .ant-row {
+      .ant-col:nth-of-type(1) {
+        .home-info-box-item {
+          background-image: linear-gradient(145deg, #4f5ceb33 0%, #4f5ceb00 100%);
+        }
+      }
+      .ant-col:nth-of-type(2) {
+        .home-info-box-item {
+          background-image: linear-gradient(145deg, #ff6d3d33 0%, #ff6d3d00 100%);
+        }
+      }
+      .ant-col:nth-of-type(3) {
+        .home-info-box-item {
+          background-image: linear-gradient(145deg, #25cfaa33 0%, #25cfaa00 100%);
+        }
+      }
+      .ant-col:nth-of-type(4) {
+        .home-info-box-item {
+          background-image: linear-gradient(145deg, #ffca4033 0%, #ffca4000 100%);
+        }
+      }
+    }
+  }
+
+  &-nft {
+    background-color: #1e2241;
+    padding: 0px 40px 120px 40px;
+    &-wrap {
+      background-image: url('../../assets/images/bg_gradient.jpeg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      font-family: 'Red Hat Display', Sans-serif;
+      padding: 135px 135px 135px 135px;
+      border-radius: 20px;
+      h1 {
+        color: #ffffff;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: initial;
+      }
+      p {
+        padding: 0px 0px 46px 0px;
+        font-size: 16px;
+      }
+      .ant-btn {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        height: 48px;
+        &:hover {
+          background-color: #202443;
+          border-color: #202443;
+          color: #fff;
+        }
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .home {
+    color: #ffffff;
+    font-family: 'Red Hat Display', Sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    &-banner {
+      background-color: #1e2241;
+      background-image: url('../../assets/images/bg.png');
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 130px 20px 50px 20px;
+      &-left {
+        h5 {
+          color: #8eacff;
+          font-family: 'Red Hat Display', Sans-serif;
+          font-size: .vw(30, 750) [ @vw];
+          font-weight: 500;
+          letter-spacing: 0px;
+        }
+        h1 {
+          color: #ffffff;
+          font-family: 'Red Hat Display', Sans-serif;
+          font-size: .vw(60, 750) [ @vw];
+          font-weight: 700;
+          font-style: normal;
+        }
+        p {
+          color: #ffffff;
+          font-family: 'Red Hat Display', Sans-serif;
+          font-size: .vw(20, 750) [ @vw];
+          font-weight: 500;
+          padding-bottom: .vw(60, 750) [ @vw];
+        }
+        .ant-btn {
+          color: var(--color-primary);
+          background-color: #33333300;
+          border-style: solid;
+          border-width: 2px 2px 2px 2px;
+          border-color: var(--color-primary);
+          border-radius: 20px;
+          padding-left: 30px;
+          padding-right: 30px;
+          box-shadow: 0px 7px 20px 0px rgb(0 0 0 / 25%);
+          height: 50px;
+          &:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+          }
+        }
+      }
+      &-right {
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid var(--color-white);
+        background-color: #8c7caa;
+
+        &-content {
+          h3 {
+            color: var(--color-white);
+            font-size: 21px;
+            font-weight: 700;
+            margin: 30px 0;
+          }
+        }
+        &-image {
+          position: relative;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+          }
+        }
+        .home-nft-price {
+          color: var(--color-white);
+          font-weight: 700;
+          :first-child {
+            color: #202443;
+            margin-right: 10px;
+          }
+        }
+        .home-buy {
+          background-color: #202443;
+          border-color: #202443;
+          color: var(--color-white);
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+        .hot {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          padding: 8px 20px 8px 20px;
+          background-color: #ffffffa6;
+          border: 1px solid var(--color-white);
+          border-radius: 20px;
+          box-shadow: 0px 7px 20px 0px rgb(0 0 0 / 25%);
+          :first-child {
+            width: 18px !important;
+            height: 18px !important;
+          }
+          :last-child {
+            color: #202443;
+            font-size: 12px;
+            font-weight: 500;
+            padding-left: 5px;
+          }
+        }
+      }
+      .ant-row {
+        margin: 0 !important;
+      }
+      .ant-col {
+        padding: 0 !important;
+      }
+    }
+    &-popular {
+      background-color: #1e2241;
+      background-image: url('../../assets/images/bg1.png');
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      padding: 30px 5px 30px 5px;
+      &-header {
+        padding: 0px 15px 30px 15px;
+        &-title {
+          h2 {
+            font-size: .vw(36, 750) [ @vw];
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 45px;
+          }
+          p {
+            font-size: .vw(24, 750) [ @vw];
+            font-weight: 400;
+            color: var(--color-white);
+          }
+        }
+        .ant-btn {
+          color: var(--color-white);
+          background-color: #33333300;
+          border: 1px solid var(--color-primary);
+          border-radius: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
+          height: 52px;
+          font-size: .vw(24, 750) [ @vw];
+          font-weight: 500;
+          &:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+          }
+        }
+      }
+      &-list {
+        padding: 20px;
+      }
+    }
+
+    &-trend {
+      background-color: #1e2241;
+      padding: 30px 20px;
+      &-wrap {
+        background-color: #1e2241;
+        background-image: url('../../assets/images/trending-creator.jpeg');
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 30px 20px;
+        max-width: 1440px;
+        margin: 0 auto;
+        border-radius: 20px;
+        h1 {
+          color: var(--color-white);
+          font-size: .vw(36, 750) [ @vw];
+          font-weight: 700;
+          margin-bottom: .vw(50, 750) [ @vw];
+        }
+        .sub-title {
+          font-size: .vw(28, 750) [ @vw];
+          font-weight: 400;
+          padding: 0;
+          margin-bottom: .vw(50, 750) [ @vw];
+        }
+      }
+      &-item {
+        padding: 15px;
+        background-color: #1e2243;
+        border-radius: 20px 20px 20px 20px;
+        box-shadow: 0px 4px 4px 0px rgb(26 25 39 / 25%);
+        img {
+          width: 62px;
+          height: 62px;
+          border-radius: 50%;
+          margin-right: 20px;
+        }
+        &-label {
+          color: #ffffff;
+          font-family: 'Red Hat Display', Sans-serif;
+          font-style: normal;
+          text-decoration: none;
+          line-height: 1em;
+          letter-spacing: 0px;
+          h4 {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 15px 0px 10px 0px;
+          }
+          p {
+            color: var(--color-white);
+            font-size: 12px;
+            span {
+              color: #4f7dfd;
+            }
+          }
+        }
+      }
+    }
+
+    &-explore {
+      background-color: #1e2241;
+      padding: 120px 20px 50px 20px;
+      h1 {
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        font-size: .vw(36, 750) [ @vw];
+        font-weight: 700;
+        padding: 0 15px 15px 15px;
+      }
+      &-btns {
+        width: 100%;
+        margin: 40px 0 0 0;
+        .ant-btn {
+          color: var(--color-white);
+          background-color: #33333300;
+          border: 1px solid var(--color-primary);
+          border-radius: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
+          height: 48px;
+          font-size: .vw(28, 750) [ @vw];
+          font-weight: 500;
+          &:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+
+    &-info-box {
+      background-color: #1e2241;
+      padding: 0px 20px 50px 20px;
+      &-item {
+        padding: 40px 25px 40px 25px;
+        background-color: transparent;
+        background-image: linear-gradient(145deg, #ffca4033 0%, #ffca4000 100%);
+        border-radius: 20px;
+        height: 100%;
+        img {
+          width: 59px;
+          height: auto;
+          padding: 0px 0px 20px 0px;
+        }
+        h1 {
+          color: #ffffff;
+          font-family: 'Red Hat Display', Sans-serif;
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0px 0px 19px 0px;
+        }
+        p {
+          margin: 0px 0px 0px 0px;
+          color: #ffffff;
+          font-family: 'Red Hat Display', Sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+        }
+      }
+      .ant-row {
+        .ant-col:nth-of-type(1) {
+          .home-info-box-item {
+            background-image: linear-gradient(145deg, #4f5ceb33 0%, #4f5ceb00 100%);
+          }
+        }
+        .ant-col:nth-of-type(2) {
+          .home-info-box-item {
+            background-image: linear-gradient(145deg, #ff6d3d33 0%, #ff6d3d00 100%);
+          }
+        }
+        .ant-col:nth-of-type(3) {
+          .home-info-box-item {
+            background-image: linear-gradient(145deg, #25cfaa33 0%, #25cfaa00 100%);
+          }
+        }
+        .ant-col:nth-of-type(4) {
+          .home-info-box-item {
+            background-image: linear-gradient(145deg, #ffca4033 0%, #ffca4000 100%);
+          }
+        }
+      }
+    }
+
+    &-nft {
+      background-color: #1e2241;
+      padding: 0px 20px 50px 20px;
+      &-wrap {
+        background-image: url('../../assets/images/bg_gradient.jpeg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #ffffff;
+        font-family: 'Red Hat Display', Sans-serif;
+        padding: 20px;
+        border-radius: 20px;
+        h1 {
+          color: #ffffff;
+          font-size: .vw(50, 750) [ @vw];
+          font-weight: 700;
+          line-height: initial;
+          margin-bottom: 40px;
+        }
+        p {
+          padding: 0px 0px 30px 0px;
+          font-size: 16px;
+        }
+        .btns {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 80px;
+          width: 100%;
+        }
+        .ant-btn {
+          background-color: var(--color-primary);
+          border-color: var(--color-primary);
+          color: var(--color-white);
+          border-radius: 20px;
+          font-size: 16px;
+          font-weight: 500;
+          height: 48px;
+          width: 100%;
+          &:hover {
+            background-color: #202443;
+            border-color: #202443;
+            color: #fff;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
