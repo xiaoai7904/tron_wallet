@@ -1,23 +1,19 @@
-export const logoIcon = require('./images/Cosmic-Muggles.png');
-export const bgIcon = require('./images/bg.png');
-export const nft1Icon = require('./images/1.jpg');
-export const heartIcon = require('./images/heart.png')
-export const user1Icon = require('./images/user1.png')
-export const user2Icon = require('./images/user2.png')
-export const user3Icon = require('./images/user3.png')
-export const user4Icon = require('./images/user4.png')
-export const user5Icon = require('./images/user5.png')
-export const user6Icon = require('./images/user6.png')
-export const user7Icon = require('./images/user7.png')
-export const user8Icon = require('./images/user8.png')
-export const user9Icon = require('./images/user9.png')
-export const user10Icon = require('./images/user10.png')
-export const user11Icon = require('./images/user11.png')
-export const infoIcon1 = require('./images/userIcon.png')
-export const infoIcon2 = require('./images/add-info-icon.png')
-export const infoIcon3 = require('./images/info-icon-03.png')
-export const infoIcon4 = require('./images/info-icon-04.png')
-export const nftbgIcon = require('./images/image90.png')
-export const imageIcon = require('./images/image.png')
-export const image1Icon = require('./images/image1.jpeg')
+import img1 from './images/2.jpg';
+import img2 from './images/2.jpg';
+import img3 from './images/3.jpg';
+import img4 from './images/4.jpg';
+import img5 from './images/5.jpg';
+import img6 from './images/6.jpg';
+import img7 from './images/7.jpg';
+import img8 from './images/8.jpg';
+import img9 from './images/9.jpg';
+import img10 from './images/10.jpg';
+import img11 from './images/11.jpg';
+import img12 from './images/12.jpg';
+import img13 from './images/13.jpg';
+import img14 from './images/14.jpg';
+import img15 from './images/15.jpg';
+import img16 from './images/16.jpg';
+import img17 from './images/17.jpg';
 
+export { img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17 };

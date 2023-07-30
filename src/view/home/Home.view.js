@@ -8,7 +8,7 @@ import LayoutView from '@/components/layout/Layout.view';
 import HomeExploreView from './HomeExplore.view';
 // import HomeInfoBoxView from './HomeInfoBox.view';
 // import HomeNftView from './HomeNft.view';
-import HomeTestView from './HomeTest.view'
+// import HomeTestView from './HomeTest.view'
 import './Home.style.less';
 
 export const HomeView = () => {

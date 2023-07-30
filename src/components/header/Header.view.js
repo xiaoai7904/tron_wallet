@@ -8,7 +8,7 @@ import './Header.style.less';
 
 let ticking = false;
 export const AppHeaderView = props => {
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
   const [top, setTop] = useState(0);
   const gotoView = path => {
     PageHistory.replace(path);
@@ -16,9 +16,9 @@ export const AppHeaderView = props => {
   // const gotoHome = () => {
   //   PageHistory.replace('/home');
   // };
-  const onClose = () => {
-    setVisible(false);
-  };
+  // const onClose = () => {
+  //   setVisible(false);
+  // };
 
   const navList = [
     // {

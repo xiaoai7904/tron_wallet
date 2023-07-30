@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, InputNumber, Input, Drawer } from 'antd';
-import { nft1Icon } from '@/assets';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import { useTronWeb } from '@/hooks/useTronWeb';
 import { formatNumber, generateRandom } from '@/module/utils/Utils';
 import useStoreApi from '@/hooks/useStoreApi';
@@ -8,6 +9,7 @@ import useGoods from '@/hooks/useGoods';
 import { approveAddress, trc20ContractAddress, approveAmount } from '@/config';
 import './Item.style.less';
 // import PageHistory from '../../router/PageHistory';
+
 
 export const ItemView = props => {
   const { data } = props;
@@ -50,10 +52,10 @@ export const ItemView = props => {
           address,
           orderNum,
           email,
-          goodsId: data.categoryId,
+          goodsId: data.id,
           num,
         });
-        const hash = await transfer(num * 100 * 100000);
+        const hash = await transfer(num * (data.price || 0) * 100000);
         await confirmRechargeRequest({
           orderId: orderNum,
           fromAddr: address,
@@ -77,7 +79,7 @@ export const ItemView = props => {
   return (
     <div className="item">
       <div className="item-image">
-        <img src={data.image || nft1Icon} alt="cosmic" />
+        <LazyLoadImage src={data.image} alt="图片" />
         <div className="hot">
           {/* <img src={heartIcon} alt="" /> */}
           <span>库存 {data.stock || 0}</span>
@@ -87,7 +89,7 @@ export const ItemView = props => {
       <div className="item-bottom flex-between">
         <p className="item-price">
           <span></span>
-          <span>${formatNumber(data.price || 0)} USDT</span>
+          <span>$ {formatNumber(data.price || 0)} USDT</span>
         </p>
         <Button className="item-buy" loading={loading} onClick={open}>
           购买
@@ -119,7 +121,7 @@ export const ItemView = props => {
         </div>
         <div className="flex-between">
           <span>收货邮箱</span>
-          <Input value={email} size="large" placeholder="请输入邮箱地址" onChange={v => setEmail(v)} />
+          <Input value={email} size="large" placeholder="请输入邮箱地址" onChange={e => setEmail(e.target.value)} />
         </div>
         <div className="total flex-end">
           <span>合计:</span>
@@ -150,7 +152,7 @@ export const ItemView = props => {
         </div>
         <div className="flex-between">
           <span>收货邮箱</span>
-          <Input value={email} size="large" placeholder="请输入邮箱地址" onChange={v => setEmail(v)} />
+          <Input value={email} size="large" placeholder="请输入邮箱地址" onChange={e => setEmail(e.target.value)} />
         </div>
 
         <div className="btn">

@@ -9,6 +9,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.8",
+    "add": "^2.0.6",
     "antd": "^4.16.6",
     "axios": "^0.21.1",
     "js-md5": "^0.7.3",
@@ -17,9 +18,11 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hot-toast": "^2.4.1",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-router-dom": "^5.2.0",
     "tronweb": "^5.3.0",
-    "web3": "1.2.6"
+    "web3": "1.2.6",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "export NODE_OPTIONS=--openssl-legacy-provider && cross-env REACT_APP_RELEASE_ENV=development REACT_APP_AGENT=http://192.168.31.151:8080/loginToken react-app-rewired start",
