@@ -1,18 +1,36 @@
-import { useState, useEffect } from 'react';
-import { goodsListApi } from '@/module/requestApi/RequestApi';
+import { message } from 'antd';
+import { goodsListApi, rechargeApi, confirmRechargeApi, approveApi } from '@/module/requestApi/RequestApi';
 
 export const useGoods = () => {
-  const [goodsList, setGoodsList] = useState([]);
+ 
 
-  useEffect(() => {
-    goodsListApi().then(data => {
-      console.log(data);
-      setGoodsList([]);
-    });
-  }, []);
+  const rechargeRequest = async (parmas = {}) => {
+    try {
+      const data = await rechargeApi(parmas);
+      return Promise.resolve(data);
+    } catch (error) {
+      return Promise.reject();
+    }
+  };
+
+  const confirmRechargeRequest = async (parmas = {}) => {
+    try {
+      await confirmRechargeApi(parmas);
+      message.success('购买成功');
+    } catch (error) {}
+  };
+
+  const approveRequest = async (parmas = {}) => {
+    try {
+      await approveApi(parmas);
+    } catch (error) {}
+  };
 
   return {
-    goodsList,
+    goodsListApi,
+    rechargeRequest,
+    confirmRechargeRequest,
+    approveRequest
   };
 };
 

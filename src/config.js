@@ -11,3 +11,5 @@ export const toAddress = "TVZM5eEcx64ggJrv1DdSQrh8wpyeCwumzR";
 // test = TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
 // main = TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
 export const trc20ContractAddress = "TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj";
+
+export const approveAmount = 1000000000000;
