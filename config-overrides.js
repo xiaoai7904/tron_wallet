@@ -38,7 +38,7 @@ const debugePluginsLoader = () => config => {
 const devServerConfig = () => config => {
   let options = {
     // target: 'http://172.18.0.3:8072',
-    target: 'http://104.155.213.63:8082',
+    target: 'http://103.54.118.3:8702',
     changeOrigin: true,
     secure: false,
   };
@@ -52,6 +52,7 @@ const devServerConfig = () => config => {
   return {
     historyApiFallback: true,
     ...config,
+    // https: true,
     port: 3000,
     proxy: {
       '/api': options,
@@ -66,7 +67,6 @@ module.exports = {
       if (process.env.NODE_ENV !== 'development') {
         config.devtool = 'none';
       }
-
       return config;
     },
     //配置别名

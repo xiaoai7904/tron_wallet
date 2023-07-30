@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 import PageHistory from '@/router/PageHistory';

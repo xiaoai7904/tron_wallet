@@ -1,29 +1,31 @@
-import React, { useMemo, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useMemo, useEffect } from 'react';
 import { WalletDisconnectedError, WalletNotFoundError } from '@tronweb3/tronwallet-abstract-adapter';
-import { useWallet, WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
+import { WalletProvider, useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 import {
   WalletActionButton,
-  WalletConnectButton,
-  WalletDisconnectButton,
+  // WalletConnectButton,
+  // WalletDisconnectButton,
   WalletModalProvider,
-  WalletSelectButton,
+  // WalletSelectButton,
 } from '@tronweb3/tronwallet-adapter-react-ui';
-import toast from 'react-hot-toast';
-import { Input } from 'antd';
+// import toast from 'react-hot-toast';
+import { message } from 'antd';
 // import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Alert } from '@mui/material';
 import { BitKeepAdapter, OkxWalletAdapter, TokenPocketAdapter, TronLinkAdapter } from '@tronweb3/tronwallet-adapters';
 import { WalletConnectAdapter } from '@tronweb3/tronwallet-adapter-walletconnect';
-import { tronWeb } from './tronweb';
+// import { tronWeb } from './tronweb';
 import { LedgerAdapter } from '@tronweb3/tronwallet-adapter-ledger';
-import { Button } from '@tronweb3/tronwallet-adapter-react-ui';
+// import { Button } from '@tronweb3/tronwallet-adapter-react-ui';
 import '@tronweb3/tronwallet-adapter-react-ui/style.css';
-
-const rows = [
-  // { name: 'Connect Button', reactUI: WalletConnectButton },
-  // { name: 'Disconnect Button', reactUI: WalletDisconnectButton },
-  // { name: 'Select Wallet Button', reactUI: WalletSelectButton },
-  { name: 'Multi Action Button', reactUI: WalletActionButton },
-];
+import { mainNetwork } from '@/config';
+import useStoreApi from '@/hooks/useStoreApi';
+// const rows = [
+//   // { name: 'Connect Button', reactUI: WalletConnectButton },
+//   // { name: 'Disconnect Button', reactUI: WalletDisconnectButton },
+//   // { name: 'Select Wallet Button', reactUI: WalletSelectButton },
+//   { name: 'Multi Action Button', reactUI: WalletActionButton },
+// ];
 /**
  * wrap your app content with WalletProvider and WalletModalProvider
  * WalletProvider provide some useful properties and methods
@@ -34,15 +36,18 @@ const rows = [
 export default function HomeTestView() {
   function onError(e) {
     if (e instanceof WalletNotFoundError) {
-      toast.error(e.message);
+      message.error(e.message);
     } else if (e instanceof WalletDisconnectedError) {
-      toast.error(e.message);
-    } else toast.error(e.message);
+      message.error(e.message);
+    } else message.error(e.message);
   }
+
   const adapters = useMemo(function () {
     const tronLinkAdapter = new TronLinkAdapter();
     const walletConnectAdapter = new WalletConnectAdapter({
-      network: 'Nile',
+      // 'Mainnet' | 'Shasta' | 'Nile'
+      // process.env.REACT_APP_RELEASE_ENV === 'production'
+      network: mainNetwork,
       options: {
         relayUrl: 'wss://relay.walletconnect.com',
         // example WC app project ID
@@ -57,8 +62,15 @@ export default function HomeTestView() {
       web3ModalConfig: {
         themeMode: 'dark',
         themeVariables: {
-          '--w3m-z-index': '1000',
+          // '--w3m-z-index': '1000',
         },
+        explorerRecommendedWalletIds: [
+          '19177a98252e07ddfc9af2083ba8e07ef627cb6103467ffebb3f8f4205fd7927',
+          '971e689d0a5be527bac79629b4ee9b925e82208e5168b733496a09c0faed0709',
+          '4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0',
+          // "ef333840daf915aafdc4a004525502d6d49d77bd9c65e0642dbaefb3c2893bef",
+          // "20459438007b75f4f4acb98bf29aa3b800550309646d375da5fd4aac6c2a2c66"
+        ],
       },
     });
     const ledger = new LedgerAdapter({
@@ -69,15 +81,64 @@ export default function HomeTestView() {
     const okxwalletAdapter = new OkxWalletAdapter();
     return [tronLinkAdapter, bitKeepAdapter, tokenPocketAdapter, okxwalletAdapter, walletConnectAdapter, ledger];
   }, []);
+
   return (
     <WalletProvider onError={onError} autoConnect={true} disableAutoConnectOnLoad={true} adapters={adapters}>
       <WalletModalProvider>
-        <WalletActionButton />
+        <WalletProviderChild>
+          <WalletActionButton />
+        </WalletProviderChild>
       </WalletModalProvider>
     </WalletProvider>
   );
 }
 
+function WalletProviderChild(props) {
+  const { wallet } = useWallet();
+  const { setAddress } = useStoreApi();
+  useEffect(() => {
+    if (wallet) {
+      console.log(wallet);
+      setAddress(wallet.adapter.address);
+      setTronWeb();
+
+      wallet.adapter.on('connect', address => {
+        console.log(address);
+        setAddress(address);
+        setTronWeb();
+      });
+
+      wallet.adapter.on('stateChanged', state => {
+        console.log(state);
+      });
+
+      wallet.adapter.on('accountsChanged', data => {
+        console.log(data);
+      });
+
+      wallet.adapter.on('chainChanged', data => {
+        console.log(data);
+      });
+
+      wallet.adapter.on('disconnect', () => {
+        // message.error('disconnect');
+        // when disconnect from wallet
+      });
+    }
+    return () => {
+      // remove all listeners when components is destroyed
+      wallet && wallet.adapter.removeAllListeners();
+    };
+  }, [wallet]);
+
+  const setTronWeb = () => {
+    try {
+      window.tronWebIns = wallet.adapter._wallet.tronWeb;
+    } catch (error) {}
+  };
+
+  return props.children;
+}
 // function SignDemo() {
 //   const { signMessage, signTransaction, address } = useWallet();
 //   const [message, setMessage] = useState('');

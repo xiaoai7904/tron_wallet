@@ -1,5 +1,5 @@
 import React from 'react';
-import FooterView from '@/components/footer/Footer.view';
+// import FooterView from '@/components/footer/Footer.view';
 
 import './Layout.style.less';
 

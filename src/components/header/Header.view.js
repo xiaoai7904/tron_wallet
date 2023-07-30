@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PageHistory from '@/router/PageHistory';
-import { Drawer } from 'antd';
-import { HomeOutlined, MenuOutlined, AppstoreOutlined } from '@ant-design/icons';
+// import { Drawer } from 'antd';
+// import { HomeOutlined, MenuOutlined, AppstoreOutlined } from '@ant-design/icons';
 import ConnectWalletModal from '@/components/connectWalletModalV2/ConnectWalletModalV2.class';
-import { logoIcon } from '@/assets';
+// import { logoIcon } from '@/assets';
 import './Header.style.less';
 
 let ticking = false;
@@ -13,9 +13,9 @@ export const AppHeaderView = props => {
   const gotoView = path => {
     PageHistory.replace(path);
   };
-  const gotoHome = () => {
-    PageHistory.replace('/home');
-  };
+  // const gotoHome = () => {
+  //   PageHistory.replace('/home');
+  // };
   const onClose = () => {
     setVisible(false);
   };
@@ -65,7 +65,7 @@ export const AppHeaderView = props => {
   return (
     <div className={top > 100 ? 'app-h5-header app-view-header' : 'app-view-header'}>
       <div className="app-view-header-wrap flex-between">
-        <img className="app-view-logo" src={logoIcon} alt="app" onClick={() => gotoHome()} />
+        {/* <img className="app-view-logo" src={logoIcon} alt="app" onClick={() => gotoHome()} /> */}
         <div className="app-view-nav-content flex-start">
           <ul className="app-view-nav flex-between">
             {navList.map((item, index) => (
@@ -79,14 +79,14 @@ export const AppHeaderView = props => {
       </div>
       <div className="h5-header">
         <div className="flex-center">
-          <img className="app-view-logo" src={logoIcon} alt="app" onClick={() => gotoHome()} />
+          {/* <img className="app-view-logo" src={logoIcon} alt="app" onClick={() => gotoHome()} /> */}
         </div>
-        <div className="h5-header-nav flex-between">
-          <MenuOutlined className="app-view-header-menu" style={{ fontSize: '24px', color: '#fff' }} onClick={() => setVisible(true)} />
+        <div className="h5-header-nav flex-end">
+          {/* <MenuOutlined className="app-view-header-menu" style={{ fontSize: '24px', color: '#fff' }} onClick={() => setVisible(true)} /> */}
           <ConnectWalletModal/>
         </div>
       </div>
-      <Drawer placement="left" onClose={onClose} visible={visible} width={'50vw'} closable={false} className="mini-nav">
+      {/* <Drawer placement="left" onClose={onClose} visible={visible} width={'50vw'} closable={false} className="mini-nav">
         <img className="app-view-logo" src={logoIcon} alt="app" onClick={() => gotoHome()} />
         <ul className="app-view-mini-nav">
           {navList.map((item, index) => (
@@ -95,7 +95,7 @@ export const AppHeaderView = props => {
             </li>
           ))}
         </ul>
-      </Drawer>
+      </Drawer> */}
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import Web3 from 'web3';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
-import { bscRpc, bscTestRpc1, infuraId } from '@/config';
+// import { bscRpc, bscTestRpc1, infuraId } from '@/config';
 
 const POLLING_INTERVAL = 12000;
+const bscRpc = '', bscTestRpc1 = '', infuraId = ''
 
 export const ChainId = {
   BSC: 56,

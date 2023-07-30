@@ -139,7 +139,7 @@ function SignDemo() {
   const [message, setMessage] = useState('');
   const [signedMessage, setSignedMessage] = useState('');
   const receiver = 'TMDKznuDWaZwfZHcM61FVFstyYNmK6Njk1';
-  const [open, setOpen] = useState(false);
+  const [setOpen] = useState(false);
 
   async function onSignMessage() {
     const res = await signMessage(message);

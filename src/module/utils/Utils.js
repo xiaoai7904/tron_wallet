@@ -1,6 +1,10 @@
 import MD5 from 'js-md5';
-import { transferAddressMap, chianNameMap, contractAddressMap } from '@/config';
+// import { transferAddressMap, chianNameMap, contractAddressMap } from '@/config';
 import { localStorageApi } from '@/store';
+
+const transferAddressMap = {},
+  chianNameMap = {},
+  contractAddressMap = {};
 
 export const md5 = word => MD5(word);
 export const throttle = (fn, ms) => {
@@ -83,3 +87,5 @@ export const copyText = text => {
     document.body.removeChild(textarea);
   }
 };
+
+export const formatNumber = (data, precision = 2) => new Intl.NumberFormat('en-IN').format(Number(data?.toFixed(precision)));

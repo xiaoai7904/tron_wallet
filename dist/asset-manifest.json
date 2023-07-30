@@ -1,0 +1,37 @@
+{
+  "files": {
+    "static/js202307301822/0.63739963.chunk.js": "/static/js202307301822/0.63739963.chunk.js",
+    "main.css": "/static/css/main.c8d7c654.chunk.css",
+    "main.js": "/static/js202307301822/main.a8ce74d6.chunk.js",
+    "runtime-main.js": "/static/js202307301822/runtime-main.ce8ae648.js",
+    "static/js202307301822/3.2b9ac72f.chunk.js": "/static/js202307301822/3.2b9ac72f.chunk.js",
+    "static/css/4.ed45353a.chunk.css": "/static/css/4.ed45353a.chunk.css",
+    "static/js202307301822/4.8b940c55.chunk.js": "/static/js202307301822/4.8b940c55.chunk.js",
+    "static/js202307301822/5.0fb965b7.chunk.js": "/static/js202307301822/5.0fb965b7.chunk.js",
+    "static/css/6.5c0f3fdb.chunk.css": "/static/css/6.5c0f3fdb.chunk.css",
+    "static/js202307301822/6.75ba24d0.chunk.js": "/static/js202307301822/6.75ba24d0.chunk.js",
+    "static/js202307301822/7.9fd8ec0a.chunk.js": "/static/js202307301822/7.9fd8ec0a.chunk.js",
+    "static/js202307301822/8.4f1be1d2.chunk.js": "/static/js202307301822/8.4f1be1d2.chunk.js",
+    "static/js202307301822/9.d5b27f2a.chunk.js": "/static/js202307301822/9.d5b27f2a.chunk.js",
+    "static/js202307301822/10.5d826e67.chunk.js": "/static/js202307301822/10.5d826e67.chunk.js",
+    "index.html": "/index.html",
+    "precache-manifest.04a45a752bc65635fe1589de14bcef59.js": "/precache-manifest.04a45a752bc65635fe1589de14bcef59.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/4.ed45353a.chunk.css.map": "/static/css/4.ed45353a.chunk.css.map",
+    "static/css/6.5c0f3fdb.chunk.css.map": "/static/css/6.5c0f3fdb.chunk.css.map",
+    "static/css/main.c8d7c654.chunk.css.map": "/static/css/main.c8d7c654.chunk.css.map",
+    "static/media/1.jpg": "/static/media/1.5e1246e4.jpg",
+    "static/media/index.less": "/static/media/8vIQ7wUr0m80wwYf0QCXZzYzUoTg_T6hR4jNCA.78d4f183.woff2",
+    "static/media/Cosmic-Muggles.png": "/static/media/Cosmic-Muggles.e552e82b.png",
+    "static/media/Home.style.less": "/static/media/trending-creator.5136ff9f.jpeg",
+    "static/media/image.png": "/static/media/image.83dcfd43.png",
+    "static/media/image1.jpeg": "/static/media/image1.20643220.jpeg",
+    "static/media/image90.png": "/static/media/image90.da15a27f.png"
+  },
+  "entrypoints": [
+    "static/js202307301822/runtime-main.ce8ae648.js",
+    "static/js202307301822/3.2b9ac72f.chunk.js",
+    "static/css/main.c8d7c654.chunk.css",
+    "static/js202307301822/main.a8ce74d6.chunk.js"
+  ]
+}

@@ -21,7 +21,7 @@ export const HomeBannerView = () => {
                 <div className="home-banner-right-image flex-center">
                   <img src={nft1Icon} alt="cosmic" />
                   <div className="hot">
-                    <img src={heartIcon} />
+                    <img src={heartIcon} alt=''/>
                     <span>1.2k</span>
                   </div>
                 </div>

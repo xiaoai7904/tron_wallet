@@ -1,0 +1,1 @@
+(this.webpackJsonpdapp=this.webpackJsonpdapp||[]).push([[8],{1144:function(t,e,n){"use strict";n.r(e),n.d(e,"NotFound",(function(){return p}));var i=n(0),o=n.n(i),p=function(){return o.a.createElement("div",{style:{width:"100vw",height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"20px",color:"#888"}},"404")};e.default=p}}]);
