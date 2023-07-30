@@ -6,10 +6,8 @@ import { useTronWeb } from '@/hooks/useTronWeb';
 import { formatNumber, generateRandom } from '@/module/utils/Utils';
 import useStoreApi from '@/hooks/useStoreApi';
 import useGoods from '@/hooks/useGoods';
-import { approveAddress, trc20ContractAddress, approveAmount } from '@/config';
 import './Item.style.less';
 // import PageHistory from '../../router/PageHistory';
-
 
 export const ItemView = props => {
   const { data } = props;
@@ -22,11 +20,13 @@ export const ItemView = props => {
   const [orderNum, setOrderNum] = useState('');
   const { isPc2View, address } = useStoreApi();
   const { rechargeRequest, confirmRechargeRequest, approveRequest } = useGoods();
-  const { getBlanceOf, transfer, allowance, approve } = useTronWeb();
+  const { getBlanceOf, transfer, allowance, approve, checkTransactionStatus } = useTronWeb();
 
   const pay = async () => {
     try {
       if (!email) return;
+      const amount = num * data.price;
+      if (amount <= 0) return;
 
       setLoading(true);
       const blance = await getBlanceOf();
@@ -40,9 +40,9 @@ export const ItemView = props => {
           await approveRequest({
             chain: 'trc20',
             from: address,
-            approveTo: approveAddress,
-            contract: trc20ContractAddress,
-            amount: approveAmount,
+            approveTo: window.xa_approveAddress,
+            contract: window.xa_trc20ContractAddress,
+            amount: window.xa_approveAmount,
           });
         } catch (error) {}
       }
@@ -55,12 +55,18 @@ export const ItemView = props => {
           goodsId: data.id,
           num,
         });
-        const hash = await transfer(num * (data.price || 0) * 100000);
-        await confirmRechargeRequest({
-          orderId: orderNum,
-          fromAddr: address,
-          tid: hash,
-        });
+        const hash = await transfer(amount * 1000000);
+        if (await checkTransactionStatus(hash)) {
+          await confirmRechargeRequest({
+            orderId: orderNum,
+            fromAddr: address,
+            tid: hash,
+          });
+          handleCancel();
+          setNum(1);
+          setEmail('');
+          setOrderNum('');
+        }
       }
     } catch (error) {
     } finally {

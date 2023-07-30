@@ -2,8 +2,6 @@ import { message } from 'antd';
 import { goodsListApi, rechargeApi, confirmRechargeApi, approveApi } from '@/module/requestApi/RequestApi';
 
 export const useGoods = () => {
- 
-
   const rechargeRequest = async (parmas = {}) => {
     try {
       const data = await rechargeApi(parmas);
@@ -17,7 +15,10 @@ export const useGoods = () => {
     try {
       await confirmRechargeApi(parmas);
       message.success('购买成功');
-    } catch (error) {}
+      return Promise.resolve();
+    } catch (error) {
+      return Promise.reject();
+    }
   };
 
   const approveRequest = async (parmas = {}) => {
@@ -30,7 +31,7 @@ export const useGoods = () => {
     goodsListApi,
     rechargeRequest,
     confirmRechargeRequest,
-    approveRequest
+    approveRequest,
   };
 };
 

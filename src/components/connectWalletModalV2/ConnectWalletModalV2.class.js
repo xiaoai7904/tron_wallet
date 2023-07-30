@@ -18,7 +18,6 @@ import { WalletConnectAdapter } from '@tronweb3/tronwallet-adapter-walletconnect
 import { LedgerAdapter } from '@tronweb3/tronwallet-adapter-ledger';
 // import { Button } from '@tronweb3/tronwallet-adapter-react-ui';
 import '@tronweb3/tronwallet-adapter-react-ui/style.css';
-import { mainNetwork } from '@/config';
 import useStoreApi from '@/hooks/useStoreApi';
 // const rows = [
 //   // { name: 'Connect Button', reactUI: WalletConnectButton },
@@ -47,7 +46,7 @@ export default function HomeTestView() {
     const walletConnectAdapter = new WalletConnectAdapter({
       // 'Mainnet' | 'Shasta' | 'Nile'
       // process.env.REACT_APP_RELEASE_ENV === 'production'
-      network: mainNetwork,
+      network: window.xa_mainNetwork,
       options: {
         relayUrl: 'wss://relay.walletconnect.com',
         // example WC app project ID

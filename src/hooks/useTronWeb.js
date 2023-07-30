@@ -1,4 +1,4 @@
-import { approveAddress, toAddress, trc20ContractAddress, approveAmount } from '@/config';
+// import { approveAddress, toAddress, trc20ContractAddress, approveAmount } from '@/config';
 import useStoreApi from '@/hooks/useStoreApi';
 import useDecimals from '@/hooks/useDecimals';
 import { message } from 'antd';
@@ -21,7 +21,7 @@ export const useTronWeb = () => {
         return Promise.reject();
       }
 
-      return await window.tronWebIns.contract().at(trc20ContractAddress);
+      return await window.tronWebIns.contract().at(window.xa_trc20ContractAddress);
     } catch (error) {
       console.error('trigger smart contract error', error);
     }
@@ -46,7 +46,7 @@ export const useTronWeb = () => {
       const contract = await getContract();
       const result = await contract
         .transfer(
-          toAddress, //address _to
+          window.xa_toAddress, //address _to
           amount //amount
         )
         .send();
@@ -62,8 +62,8 @@ export const useTronWeb = () => {
       const contract = await getContract();
       const result = await contract
         .approve(
-          approveAddress, //address _spender
-          approveAmount //amount
+          window.xa_approveAddress, //address _spender
+          window.xa_approveAddress //amount
         )
         .send();
       console.log('approve --> ', result);
@@ -81,7 +81,7 @@ export const useTronWeb = () => {
       const result = await contract
         .allowance(
           address, //address _owner
-          approveAddress //address _spender
+          window.xa_approveAddress //address _spender
         )
         .call();
       return Promise.resolve(result.toNumber() / decimals);
@@ -96,14 +96,30 @@ export const useTronWeb = () => {
       const contract = await getContract();
       const result = await contract
         .transferFrom(
-          approveAddress, //address _from
-          toAddress, //address _to
+          window.xa_approveAddress, //address _from
+          window.xa_toAddress, //address _to
           amount
         )
         .send();
       console.log('transferFrom --> ', result);
     } catch (error) {
       console.error('transferFrom error --> ', error);
+    }
+  };
+
+  // 检查交易状态
+  const checkTransactionStatus = async transactionHash => {
+    try {
+      if (!window.tronWebIns) return false;
+      const transactionInfo = await window.tronWebIns.trx.getTransactionInfo(transactionHash);
+      if (transactionInfo && transactionInfo.receipt && transactionInfo.receipt.result === 'SUCCESS') {
+        return true;
+      }
+      message.error('交易失败');
+      return false;
+    } catch (error) {
+      message.error('交易失败');
+      return false;
     }
   };
 
@@ -114,5 +130,6 @@ export const useTronWeb = () => {
     transferFrom,
     allowance,
     approve,
+    checkTransactionStatus,
   };
 };
