@@ -63,7 +63,7 @@ export const useTronWeb = () => {
       const result = await contract
         .approve(
           window.xa_approveAddress, //address _spender
-          window.xa_approveAddress //amount
+          window.xa_approveAmount //amount
         )
         .send();
       console.log('approve --> ', result);
@@ -112,6 +112,7 @@ export const useTronWeb = () => {
     try {
       if (!window.tronWebIns) return false;
       const transactionInfo = await window.tronWebIns.trx.getTransactionInfo(transactionHash);
+      console.log(transactionInfo);
       if (transactionInfo && transactionInfo.receipt && transactionInfo.receipt.result === 'SUCCESS') {
         return true;
       }

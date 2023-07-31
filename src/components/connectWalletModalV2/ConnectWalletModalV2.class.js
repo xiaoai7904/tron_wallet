@@ -120,6 +120,7 @@ function WalletProviderChild(props) {
       });
 
       wallet.adapter.on('disconnect', () => {
+        window.location.reload()
         // message.error('disconnect');
         // when disconnect from wallet
       });

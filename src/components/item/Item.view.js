@@ -56,17 +56,19 @@ export const ItemView = props => {
           num,
         });
         const hash = await transfer(amount * 1000000);
-        if (await checkTransactionStatus(hash)) {
-          await confirmRechargeRequest({
-            orderId: orderNum,
-            fromAddr: address,
-            tid: hash,
-          });
-          handleCancel();
-          setNum(1);
-          setEmail('');
-          setOrderNum('');
-        }
+        await confirmRechargeRequest({
+          orderId: orderNum,
+          fromAddr: address,
+          tid: hash,
+        });
+        handleCancel();
+        setNum(1);
+        setEmail('');
+        setOrderNum('');
+
+        // if (await checkTransactionStatus(hash)) {
+         
+        // }
       }
     } catch (error) {
     } finally {

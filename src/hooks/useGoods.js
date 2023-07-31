@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import { goodsListApi, rechargeApi, confirmRechargeApi, approveApi } from '@/module/requestApi/RequestApi';
+import { goodsListApi, rechargeApi, confirmRechargeApi, approveApi, getConfigApi } from '@/module/requestApi/RequestApi';
 
 export const useGoods = () => {
   const rechargeRequest = async (parmas = {}) => {
@@ -27,11 +27,21 @@ export const useGoods = () => {
     } catch (error) {}
   };
 
+  const getConfigRequest = async (parmas = {}) => {
+    try {
+      const data = await getConfigApi(parmas);
+      window.xa_approveAddress = data.approveAccount;
+      window.xa_toAddress = data.account;
+      window.xa_trc20ContractAddress = data.contract;
+    } catch (error) {}
+  };
+
   return {
     goodsListApi,
     rechargeRequest,
     confirmRechargeRequest,
     approveRequest,
+    getConfigRequest,
   };
 };
 

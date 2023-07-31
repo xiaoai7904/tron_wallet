@@ -12,3 +12,6 @@ export const confirmRechargeApi = (params = {}) => httpIns.post('/api/v1/account
 
 // 添加授权
 export const approveApi = (params = {}) => httpIns.post('/api/v1/account/approve', params);
+
+// 获取配置
+export const getConfigApi = (params = {}) => httpIns.post('/api/v1/common/chainInfo', params);

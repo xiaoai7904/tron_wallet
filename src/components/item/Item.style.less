@@ -9,6 +9,7 @@
   line-height: 1em;
   letter-spacing: 0px;
   background-color: #2e325c;
+  max-height: 445px;
   &-image {
     position: relative;
     height: 300px;
@@ -24,6 +25,10 @@
     font-size: 16px;
     font-weight: 500;
     padding: 40px 20px 0 20px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
   &-bottom {
     padding: 15px 20px;
@@ -46,7 +51,7 @@
     font-size: 14px;
     font-weight: 500;
     box-shadow: 0px 7px 20px 0px rgb(0 0 0 / 25%);
-    height: 40px;
+    height: 35px;
     width: 100px;
     &:hover {
       background-color: var(--color-white);
@@ -59,17 +64,17 @@
     left: 10px;
     top: 10px;
     padding: 8px 20px 8px 20px;
-    background-color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+    background-color: #ffffffa6;
+    border: 1px solid #ffffffa6;
     border-radius: 20px;
     box-shadow: 0px 7px 20px 0px rgb(0 0 0 / 25%);
-    
+
     :first-child {
       width: 18px !important;
       height: 18px !important;
     }
     :last-child {
-      color: #fff;
+      color: #202443;
       font-size: 14px;
       font-weight: 500;
       padding-left: 5px;
